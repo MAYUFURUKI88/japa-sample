@@ -1,4 +1,4 @@
-package Sample3;
+package Sample3_9syoumatu;
 
 import java.util.Calendar;
 import java.util.Date;

@@ -1,4 +1,4 @@
-package Sample3;
+package Sample3_9syoumatu;
 
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
