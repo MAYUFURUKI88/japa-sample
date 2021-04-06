@@ -1,9 +1,12 @@
-package practice;
+package Sample16syoumatu_3;
 
 import java.io.BufferedReader;
+import java.io.BufferedWriter;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
+import java.io.FileWriter;
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -15,11 +18,15 @@ public class Main {
 
 		// getPersonListFromFile呼び出し
 
-		// outputResult呼び出し
-
 		Main main = new Main();
 		List<Person> li = main.getPersonListFromFile("16-last-03.csv");
-		main.outputResult();
+
+		// outputResult呼び出し
+
+		main.outputResult(li);
+
+		//writeStrToFile呼び出し
+		main.writeStrToFile(li);
 
 	}
 
@@ -46,13 +53,11 @@ public class Main {
 					//
 					//					list.add(p);
 
-
 					String[] strs = str.split(",");
 					Person p = new Person();
 					p.setName(strs[0]);
-					p.setAge(Integer.parseInt (strs[1]));
+					p.setAge(Integer.parseInt(strs[1]));
 					list.add(p);
-
 
 				} else {
 					break;
@@ -76,11 +81,11 @@ public class Main {
 	 * @param str
 	 * @return
 	 */
-	private String[] separateStrByKannma(String str) {
-
-
-
-	}
+	//	private String[] separateStrByKannma(String str) {
+	//
+	//
+	//
+	//	}
 
 	/**
 	 * 引数のリストを標準出力へ表示する
@@ -88,7 +93,47 @@ public class Main {
 	 * @param list
 	 */
 	private void outputResult(List<Person> list) {
-		sys
 
+		for (int i = 0; i < list.size(); i++) {
+
+			Person p = list.get(i);
+
+			String name = p.getName();
+			Integer age = p.getAge();
+
+			String line = "name" + name + " age" + age;
+
+			System.out.println(line);
+		}
 	}
+
+	private void outputResult2(List<Person> list) {
+
+		for (Person p : list) {
+
+			System.out.println(p);
+		}
+	}
+
+	private void outputResult3(List<Person> list) {
+
+		list.forEach(System.out::println);
+	}
+
+	//Personリストをファイルに出力する
+	private void writeStrToFile(List<Person> list) {
+		try {
+			FileWriter file = new FileWriter("16-last-04-out.txt");
+			PrintWriter pw = new PrintWriter(new BufferedWriter(file));
+
+			for (Person p : list) {
+				pw.println(p);
+			}
+			pw.close();
+
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+	}
+
 }

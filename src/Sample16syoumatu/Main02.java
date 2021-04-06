@@ -1,4 +1,4 @@
-package Sample21;
+package Sample16syoumatu;
 
 import java.io.BufferedReader;
 import java.io.FileNotFoundException;
